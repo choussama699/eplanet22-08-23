@@ -1,0 +1,22 @@
+
+
+
+ 
+   loadProduct() async{
+  List<Product> products = [];
+   Iterable coll = _firestore.collection(AppString.product).snapshots() as Iterable;
+
+   Iterator doc = coll.iterator ;
+    while(doc.moveNext()){
+      products.add(Product(
+       pName:  AppString.productName,
+       pCategory: AppString.productCategory,
+       pDescription: AppString.productDescription,
+       pLocation: AppString.productLocation,
+       pPrice: AppString.productPrice));
+
+       
+    }
+    return products;
+   }
+   
